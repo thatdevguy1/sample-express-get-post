@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <title>Hot Restaurant</title>
+</head>
+<body>
+    <h1>Users App</h1>
+
+    <label>Name</label>
+    <input id="name" type='text' />
+
+    <label>Age</label>
+    <input id="age" type='text' />
+
+    <button id="submitBtn">Submit</button>
+
+    <a href="users.html"><button id="view-table">View Users</button></a>
+
+    <script>
+    
+    var submitBtn = document.querySelector('#submitBtn');
+
+    submitBtn.addEventListener('click', async function(e){
+        const name = document.querySelector('#name').value;
+        const age = document.querySelector('#age').value;
+        e.preventDefault();
+
+        const data = {
+            name, age
+        }
+        var response = await $.post('/api/users', data);
+        console.log(response);
+
+        //leave an alert
+    })
+    </script>
+</body>
+</html>
